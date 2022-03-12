@@ -1,0 +1,32 @@
+public static int makeProductOne(int[] arr, int N) {
+        
+        int zeroes = 0;
+        int negative=0;
+    
+        int step = 0;
+     
+        for (int i = 0; i < N; i++){
+     
+            if (arr[i] == 0){
+                step++;
+                zeroes++;
+            }
+     
+            else if (arr[i] < 0){
+                step+=(-1 - arr[i]);
+                negative++;
+            }
+     
+            else{
+                step+=(arr[i] - 1);
+            }
+        }
+     
+     
+        if (negative%2==0 || zeroes>0){
+            return step;
+        }
+     
+        return step+2;
+        
+    }
