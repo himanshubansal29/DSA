@@ -1,0 +1,26 @@
+public int findK(int A[][], int n, int m, int k){
+        
+    if (n < 1 || m < 1) 
+        return -1; 
+    
+    /* Element is in first row */
+    if (k <= m) 
+        return A[0][k-1]; 
+  
+    /* Element is in last column */
+    if (k <= (m+n-1)) 
+        return A[(k-m)][m-1]; 
+  
+    /* Element is in last row */
+    if (k <= (2*m+n-2)) 
+        return A[n-1][m-1-(k-(m+n-1))]; 
+  
+    /* Element is in first column */
+    if (k <= (2*m+2*n-4)) 
+        return A[n-1-(k-(2*m+n-2))][0]; 
+  
+    /*..........If element is NOT in outermost ring .......*/
+    /* Recursion for sub-matrix.*/
+    return findK(A, n-2, 
+                  m-2, k-(2*n+2*m-4));
+    }
